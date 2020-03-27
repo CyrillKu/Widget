@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Widget</title>
+</head>
+
+<body onload="loadInfo()">
+    <header>
+        <div id="content">
+            <div class="heading">Ваш заказ №<span class="order_id">1890998</span> принят <br> и находится в обработке
+            </div>
+        </div>
+    </header>
+    <section>
+        <div id="content">
+            <div id="discount">
+                <span class="discount_percent"></span>
+                <p class="greeting">Михаил Иванович!</p>
+                <p class="greeting_text">подарите друзьям скидку <br> в &laquo;<span id="company"></span>&raquo; и
+                    получите скидку
+                    в подарок, за каждого друга</p>
+            </div>
+            <div id="social">
+                <span class="smm_logo" id="ok">
+                    <img src="img/ok.png" alt="">
+                </span>
+                <span class="smm_logo" id="fb">
+                    <img src="img/fb.png" alt="">
+                </span>
+                <span class="smm_logo" id="tw">
+                    <img src="img/tw.png" alt="">
+                </span>
+                <span class="smm_logo" id="vk">
+                    <img src="img/vk.png" alt="">
+                </span>
+            </div>
+            <div id="email">
+                <input id="address" type="text" placeholder="E-mail друзей">
+                <textarea name="comment" id="comment"></textarea>
+                <div>
+                    <button class="send_button" type="submit">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div id="content">
+            <div id="home_link"><a class="link" href="#">http://floctoryblablabla/#########</a></div>
+            <div id="rules"><span style="line-height: 25px;">Правила акции</span> <span><img class="expand"
+                        src="img/sign.png" alt=""></span>
+                <p>
+                    <a class="eula" href="#">Пользовательское соглашение</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="clients.js"></script>
+    <script type="text/javascript">
+        function loadInfo() {
+            var randIndex = Math.floor(Math.random() * clients.length);
+            var orderNumber = document.getElementsByClassName('order_id')[0];
+            var name = document.getElementsByClassName('greeting')[0];
+            var discount = document.getElementsByClassName('discount_percent')[0];
+            var company = document.getElementById('company');
+            var comment = document.getElementById('comment');
+            orderNumber.innerText = clients[randIndex].order;
+            name.innerText = clients[randIndex].name;
+            discount.innerText = clients[randIndex].discount + '%';
+            company.innerText = clients[randIndex].company
+            comment.value =
+                "Хороший ассортимент и цены\nв " + clients[randIndex].site +
+                ". Только что после покупки подарили скидку " + clients[randIndex].discount +
+                "% для моих друзей! \n\nВремени мало. Вперед!"
+        }
+    </script>
+</body>
+
+</html>
